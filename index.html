@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>⬡ VOID.ONION — You Found Me</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fonts loaded inline so Tor Browser (which blocks Google Fonts) still renders correctly -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+    /* Fallback stack for Tor Browser / offline */
+    :root {
+      --font-mono: 'Share Tech Mono', 'Courier New', 'Lucida Console', Courier, monospace;
+      --font-display: 'Orbitron', 'Courier New', 'Impact', monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Matrix rain canvas -->
+  <canvas id="matrix"></canvas>
+
+  <!-- Scanline overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Noise overlay -->
+  <div class="noise"></div>
+
+  <div class="container">
+
+    <!-- Top status bar -->
+    <div class="status-bar">
+      <span class="status-dot"></span>
+      <span id="status-text">TOR CIRCUIT ESTABLISHED</span>
+      <span class="spacer"></span>
+      <span id="clock"></span>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="glitch-wrapper">
+        <h1 class="glitch" data-text="VOID">VOID</h1>
+      </div>
+      <p class="tagline">// You shouldn't be here. But since you are... welcome.</p>
+      <div class="onion-badge">
+        <span class="onion-icon">🧅</span>
+        <span class="onion-text">HIDDEN SERVICE ACTIVE</span>
+      </div>
+    </header>
+
+    <!-- Terminal Block -->
+    <section class="terminal-block">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">bash — void@onion:~</span>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-line">
+          <span class="prompt">root@void:~$</span>
+          <span class="cmd" id="typing-cmd"></span><span class="cursor-blink">▋</span>
+        </div>
+        <div class="terminal-output" id="terminal-output"></div>
+      </div>
+    </section>
+
+    <!-- ENTER CHAT CTA -->
+    <section class="chat-cta-section">
+      <div class="chat-cta-inner">
+        <div class="chat-cta-label">// ANONYMOUS GLOBAL CHAT — LIVE NOW</div>
+        <div class="chat-cta-desc">Messages vanish in 24h. No accounts. No traces. Everyone can post.</div>
+        <a href="chat.html" id="enter-chat-btn" class="enter-chat-btn">
+          <span class="btn-pulse-ring"></span>
+          <span class="btn-pulse-ring btn-pulse-ring-2"></span>
+          <span class="btn-icon">💬</span>
+          <span class="btn-text">ENTER THE VOID CHAT</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <div class="chat-cta-meta">
+          <span id="live-count">● LIVE</span>
+          <span>·</span>
+          <span>ENCRYPTED</span>
+          <span>·</span>
+          <span>ANONYMOUS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="cards">
+      <div class="card" id="card-1">
+        <div class="card-icon">🔐</div>
+        <h3>Anonymous</h3>
+        <p>No logs. No tracking. No cookies. Your visit leaves no trace in the shadows.</p>
+      </div>
+      <div class="card" id="card-2">
+        <div class="card-icon">🌐</div>
+        <h3>Decentralized</h3>
+        <p>No central server. Traffic bounces through 3 encrypted relays across the globe.</p>
+      </div>
+      <div class="card" id="card-3">
+        <div class="card-icon">🛡️</div>
+        <h3>Encrypted</h3>
+        <p>End-to-end onion encryption. Every layer peeled back only by its intended relay.</p>
+      </div>
+    </section>
+
+    <!-- Network stats -->
+    <section class="stats">
+      <h2 class="section-title">// NETWORK STATUS</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value" id="stat-nodes">0</span>
+          <span class="stat-label">TOR RELAYS</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-users">0</span>
+          <span class="stat-label">DAILY USERS</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-latency">0ms</span>
+          <span class="stat-label">CIRCUIT LATENCY</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">AES-256</span>
+          <span class="stat-label">ENCRYPTION</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About section -->
+    <section class="about">
+      <h2 class="section-title">// ABOUT THIS NODE</h2>
+      <div class="about-content">
+        <p>This is a <span class="highlight">Tor Hidden Service</span> — a website hosted entirely within the Tor network. The server's location is cryptographically concealed. You're accessing it through an onion-routed circuit of 3 encrypted hops.</p>
+        <p>Built for <span class="highlight">learning</span>. Hosted for <span class="highlight">curiosity</span>. Welcome to the other side of the internet.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Tor</span>
+          <span class="tech-tag">Nginx</span>
+          <span class="tech-tag">HTML/CSS/JS</span>
+          <span class="tech-tag">ED25519</span>
+          <span class="tech-tag">Linux</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>// VOID.ONION — <span class="highlight">No affiliation with illegal activities.</span> This is an educational hidden service.</p>
+      <p class="footer-sub">Built with 🧅 and curiosity</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

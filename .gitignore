@@ -1,0 +1,6 @@
+node_modules/
+*.log
+rough.txt
+.DS_Store
+uploads/
+messages.json
